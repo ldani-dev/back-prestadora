@@ -36,8 +36,6 @@ this project is development with node.js express JWT, mocha.
 -   MongoDB **3.6+**
 -   Redis **5.0+**
 
-
-
 ### Using Git (recommended)
 
 1.  Clone the project from github. Change "myproject" to your project name.
