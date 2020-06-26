@@ -64,20 +64,12 @@ exports.createItem = [
     .exists()
     .withMessage('MISSING')
     .not()
-    .custom(isDate({ format: 'DD-MM-YYYY' }))
-    .withMessage('FROM_IS_INVALIDATED_DATE')
+    .isEmpty()
+    .withMessage('IS_EMPTY')
+    .custom(v =>
+        v.match(/^(0[1-9]|1[0-2])(\/|-)([0-2][0-9]|3[0-1])\2(\d{4})$/) ? v : v === '')
+    .withMessage('INVALIDATED_DATE')
     .trim(),
-
-    // check('travelerBirthDay')
-    // .exists()
-    // .withMessage('MISSING')
-    // .not()
-    // .isEmpty()
-    // .withMessage('IS_EMPTY')
-    // .custom(v =>
-    //     v.match(/^(0[1-9]|1[0-2])(\/|-)([0-2][0-9]|3[0-1])\2(\d{4})$/) ? v : v === '')
-    // .withMessage('INVALIDATED_DATE')
-    // .trim(),
     check('jobRank')
     .exists()
     .withMessage('MISSING')
