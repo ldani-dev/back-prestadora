@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint handle-callback-err: "off"*/
 
 process.env.NODE_ENV = 'test'
@@ -26,7 +27,8 @@ describe('*********** PROFILE ***********', () => {
           res.should.have.status(200)
           res.body.should.be.an('object')
           res.body.should.have.property('token')
-          token = res.body.token
+          const currentToken = res.body.token
+          token = currentToken
           done()
         })
     })

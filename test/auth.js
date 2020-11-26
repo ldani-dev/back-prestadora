@@ -1,11 +1,12 @@
+/* eslint-disable no-undef */
 /* eslint handle-callback-err: "off"*/
 
 process.env.NODE_ENV = 'test'
 
-const User = require('../app/models/user')
+const chaiHttp = require('chai-http')
 const faker = require('faker')
 const chai = require('chai')
-const chaiHttp = require('chai-http')
+const User = require('../app/models/user')
 const server = require('../server')
 // eslint-disable-next-line no-unused-vars
 const should = chai.should()
@@ -57,7 +58,8 @@ describe('*********** AUTH ***********', () => {
           res.should.have.status(200)
           res.body.should.be.an('object')
           res.body.should.have.property('token')
-          token = res.body.token
+          const currentToken = res.body.token
+          token = currentToken
           done()
         })
     })
@@ -79,7 +81,8 @@ describe('*********** AUTH ***********', () => {
           res.body.should.be.an('object')
           res.body.should.include.keys('token', 'user')
           createdID.push(res.body.user._id)
-          verification = res.body.user.verification
+          const currentVerification = res.body.user.verification
+          verification = currentVerification
           done()
         })
     })

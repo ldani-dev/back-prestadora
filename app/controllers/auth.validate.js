@@ -1,5 +1,5 @@
-const { validationResult } = require('../middleware/utils')
 const { check } = require('express-validator')
+const { validationResult } = require('../middleware/utils')
 
 /**
  * Validates register request

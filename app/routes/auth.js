@@ -1,14 +1,16 @@
+const express = require('express')
+const passport = require('passport')
+const trimRequest = require('trim-request')
 const controller = require('../controllers/auth')
 const validate = require('../controllers/auth.validate')
 const AuthController = require('../controllers/auth')
-const express = require('express')
+
 const router = express.Router()
 require('../../config/passport')
-const passport = require('passport')
+
 const requireAuth = passport.authenticate('jwt', {
   session: false
 })
-const trimRequest = require('trim-request')
 
 /*
  * Auth routes

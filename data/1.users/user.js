@@ -1,5 +1,6 @@
+/* eslint-disable import/no-extraneous-dependencies */
 const faker = require('faker')
-const ObjectID = require('mongodb').ObjectID
+const { ObjectID } = require('mongodb')
 
 module.exports = [
   {

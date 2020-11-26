@@ -1,3 +1,6 @@
+/* eslint-disable no-invalid-this */
+/* eslint no-invalid-this: 2*/
+/* eslint-env es6*/
 const mongoose = require('mongoose')
 const requestIp = require('request-ip')
 const { validationResult } = require('express-validator')

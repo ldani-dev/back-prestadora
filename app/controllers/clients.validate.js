@@ -1,7 +1,6 @@
-const { validationResult } = require('../middleware/utils')
-const validator = require('validator')
 const { check } = require('express-validator')
 const isDate = require('lodash.isdate')
+const { validationResult } = require('../middleware/utils')
 /**
  * Validates create new item request
  */

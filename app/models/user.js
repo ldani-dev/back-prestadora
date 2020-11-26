@@ -1,3 +1,6 @@
+/* eslint-disable no-invalid-this */
+/* eslint no-invalid-this: 2*/
+/* eslint-env es6*/
 const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
 const validator = require('validator')
