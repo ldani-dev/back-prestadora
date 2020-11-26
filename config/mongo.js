@@ -1,8 +1,10 @@
 const mongoose = require('mongoose')
+
 const DB_URL = process.env.MONGO_URI
-const MONGO_TEST = process.env.MONGO_TEST
+const { MONGO_TEST } = process.env
 
 const loadModels = require('../app/models')
+
 const dbType = process.env.NODE_ENV !== 'test' ? DB_URL : MONGO_TEST
 console.log(dbType)
 module.exports = () => {
@@ -22,14 +24,14 @@ module.exports = () => {
         if (err) {
           dbStatus = `*    Error connecting to DB: ${err}\n****************************\n`
         }
-        dbStatus = `*    DB Connection: OK\n****************************\n`
+        dbStatus = '*    DB Connection: OK\n****************************\n'
         // Prints initialization
         console.log('****************************')
         console.log('*    Starting Server')
         console.log(`*    Port: ${process.env.PORT || 3000}`)
         console.log(`*    NODE_ENV: ${process.env.NODE_ENV}`)
         console.log(`*    WS_SOCKET: ${process.env.WS_PORT || 5000}`)
-        console.log(`*    Database: MongoDB`)
+        console.log('*    Database: MongoDB')
         console.log(dbStatus)
       }
     )

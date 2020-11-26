@@ -1,7 +1,9 @@
+/* eslint-disable no-return-await */
 require('dotenv-safe').config()
-const initMongo = require('./config/mongo')
 const fs = require('fs')
-const modelsPath = `./app/models`
+const initMongo = require('./config/mongo')
+
+const modelsPath = './app/models'
 const { removeExtensionFromFile } = require('./app/middleware/utils')
 
 initMongo()

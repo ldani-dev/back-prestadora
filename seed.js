@@ -1,8 +1,9 @@
 require('dotenv-safe').config()
 const { Seeder } = require('mongo-seeding')
 const path = require('path')
+
 const DB_URL = process.env.MONGO_URI
-const MONGO_TEST = process.env.MONGO_TEST
+const { MONGO_TEST } = process.env
 const dbType = process.env.NODE_ENV !== 'test' ? DB_URL : MONGO_TEST
 const config = {
   database: dbType,

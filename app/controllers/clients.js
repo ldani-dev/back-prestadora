@@ -1,5 +1,5 @@
-const model = require('../models/clients')
 const { matchedData } = require('express-validator')
+const model = require('../models/clients')
 const utils = require('../middleware/utils')
 const db = require('../middleware/db')
 

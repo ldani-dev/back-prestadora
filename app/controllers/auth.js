@@ -1,13 +1,14 @@
 const jwt = require('jsonwebtoken')
+const uuid = require('uuid')
+const { addHours } = require('date-fns')
+const { matchedData } = require('express-validator')
 const User = require('../models/user')
 const UserAccess = require('../models/userAccess')
 const ForgotPassword = require('../models/forgotPassword')
 const utils = require('../middleware/utils')
-const uuid = require('uuid')
-const { addHours } = require('date-fns')
-const { matchedData } = require('express-validator')
 const auth = require('../middleware/auth')
 const emailer = require('../middleware/emailer')
+
 const HOURS_TO_BLOCK = 2
 const LOGIN_ATTEMPTS = 5
 
@@ -199,7 +200,8 @@ const findUserById = async (userId) => {
 }
 
 /**
- * Adds one attempt to loginAttempts, then compares loginAttempts with the constant LOGIN_ATTEMPTS, if is less returns wrong password, else returns blockUser function
+ * Adds one attempt to loginAttempts, then compares loginAttempts with the constant LOGIN_ATTEMPTS,
+ * if is less returns wrong password, else returns blockUser function
  * @param {Object} user - user object
  */
 const passwordsDoNotMatch = async (user) => {

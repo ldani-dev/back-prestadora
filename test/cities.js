@@ -1,11 +1,12 @@
+/* eslint-disable no-undef */
 /* eslint handle-callback-err: "off"*/
 
 process.env.NODE_ENV = 'test'
 
-const City = require('../app/models/city')
 const faker = require('faker')
 const chai = require('chai')
 const chaiHttp = require('chai-http')
+const City = require('../app/models/city')
 const server = require('../server')
 // eslint-disable-next-line no-unused-vars
 const should = chai.should()
@@ -32,7 +33,8 @@ describe('*********** CITIES ***********', () => {
           res.should.have.status(200)
           res.body.should.be.an('object')
           res.body.should.have.property('token')
-          token = res.body.token
+          const currentToken = res.body.token
+          token = currentToken
           done()
         })
     })

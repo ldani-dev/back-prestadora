@@ -1,6 +1,8 @@
 const express = require('express')
+
 const router = express.Router()
 const fs = require('fs')
+
 const routesPath = `${__dirname}/`
 const { removeExtensionFromFile } = require('../middleware/utils')
 

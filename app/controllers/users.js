@@ -1,6 +1,6 @@
-const model = require('../models/user')
 const uuid = require('uuid')
 const { matchedData } = require('express-validator')
+const Model = require('../models/user')
 const utils = require('../middleware/utils')
 const db = require('../middleware/db')
 const emailer = require('../middleware/emailer')
@@ -15,7 +15,7 @@ const emailer = require('../middleware/emailer')
  */
 const createItem = async (req) => {
   return new Promise((resolve, reject) => {
-    const user = new model({
+    const user = new Model({
       name: req.name,
       email: req.email,
       password: req.password,
@@ -56,7 +56,7 @@ const createItem = async (req) => {
 exports.getItems = async (req, res) => {
   try {
     const query = await db.checkQueryString(req.query)
-    res.status(200).json(await db.getItems(req, model, query))
+    res.status(200).json(await db.getItems(req, Model, query))
   } catch (error) {
     utils.handleError(res, error)
   }
@@ -71,7 +71,7 @@ exports.getItem = async (req, res) => {
   try {
     req = matchedData(req)
     const id = await utils.isIDGood(req.id)
-    res.status(200).json(await db.getItem(id, model))
+    res.status(200).json(await db.getItem(id, Model))
   } catch (error) {
     utils.handleError(res, error)
   }
@@ -91,7 +91,7 @@ exports.updateItem = async (req, res) => {
       req.email
     )
     if (!doesEmailExists) {
-      res.status(200).json(await db.updateItem(id, model, req))
+      res.status(200).json(await db.updateItem(id, Model, req))
     }
   } catch (error) {
     utils.handleError(res, error)
@@ -128,7 +128,7 @@ exports.deleteItem = async (req, res) => {
   try {
     req = matchedData(req)
     const id = await utils.isIDGood(req.id)
-    res.status(200).json(await db.deleteItem(id, model))
+    res.status(200).json(await db.deleteItem(id, Model))
   } catch (error) {
     utils.handleError(res, error)
   }
