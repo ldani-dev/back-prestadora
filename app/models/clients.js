@@ -3,6 +3,29 @@ const mongoosePaginate = require('mongoose-paginate-v2')
 const mongooseDelete = require('mongoose-delete')
 const aggregatePaginate = require('mongoose-aggregate-paginate-v2')
 
+const referenceSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true
+  },
+  lastName: {
+    type: String,
+    required: true
+  },
+  relationship: {
+    type: String,
+    required: true
+  },
+  address: {
+    type: String,
+    required: true
+  },
+  phone: {
+    type: String,
+    required: true
+  }
+})
+
 const clientsSchema = new mongoose.Schema(
   {
     name: {
@@ -10,22 +33,18 @@ const clientsSchema = new mongoose.Schema(
       required: true
     },
     lastName: {
-      // 1
       type: String,
       required: true
     },
     phone: {
-      // 1
       type: String,
       required: true
     },
     address: {
-      // 1
       type: String,
       required: true
     },
     document: {
-      // 1
       type: String,
       required: true
     },
@@ -33,13 +52,11 @@ const clientsSchema = new mongoose.Schema(
       type: String,
       required: true
     },
-    interes: {
-      // 2
+    interest: {
       type: Number,
       required: true
     },
     amount: {
-      // 2
       type: Number,
       required: true
     },
@@ -48,14 +65,12 @@ const clientsSchema = new mongoose.Schema(
       required: true
     },
     status: {
-      // 2
       type: String,
-      enum: ['pending', 'completed', 'legalAction', 'lost'],
-      default: 'pending',
+      enum: ['disabled', 'enable'],
+      default: 'enable',
       required: true
     },
     jobRank: {
-      // 2
       type: String,
       required: true
     },
@@ -68,11 +83,12 @@ const clientsSchema = new mongoose.Schema(
       required: true
     },
     references: {
-      type: Array,
-      required: true
+      type: [referenceSchema],
+      default: []
     },
     payments: {
-      type: Array
+      type: Array,
+      default: []
     },
     customData: {
       type: Object
